@@ -1,11 +1,9 @@
 About gpstime
 =============
 
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
-
 Home: https://git.ligo.org/cds/gpstime
 
-Package license: Other
+Package license: GPL-3.0-or-later
 
 Feedstock license: BSD 3-Clause
 
@@ -28,9 +26,15 @@ module is also included.  It is a rough work-alike to "tconvert".
 Current build status
 ====================
 
-[![Linux](https://img.shields.io/circleci/project/github/conda-forge/gpstime-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/gpstime-feedstock)
-[![OSX](https://img.shields.io/travis/conda-forge/gpstime-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/gpstime-feedstock)
-![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
+
+<table><tr><td>All platforms:</td>
+    <td>
+      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=5589&branchName=master">
+        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/gpstime-feedstock?branchName=master">
+      </a>
+    </td>
+  </tr>
+</table>
 
 Current release info
 ====================
@@ -63,6 +67,8 @@ conda search gpstime --channel conda-forge
 
 About conda-forge
 =================
+
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
