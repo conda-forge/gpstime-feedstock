@@ -1,0 +1,17 @@
+diff --git a/setup.py b/setup.py
+index 80accaa..130a670 100644
+--- a/setup.py
++++ b/setup.py
+@@ -31,7 +31,11 @@ setup(
+     ],
+ 
+     packages=['gpstime'],
+-    scripts=['bin/gpstime'],
++    entry_points={
++        'console_scripts': [
++            'gpstime = gpstime.__main__:main',
++        ],
++    },
+ 
+     tests_require=[
+         'python-dateutil',

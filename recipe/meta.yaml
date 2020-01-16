@@ -1,28 +1,25 @@
-{% set name = "gpstime" %}
-{% set version = "0.3.3" %}
+{% set version = "0.4.4" %}
 
 package:
-  name: "{{ name }}"
-  version: "{{ version }}"
+  name: gpstime
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: dd26382df3ded8fb203f1ae8c77b3eaee6b5918c4d1bbe4e49721725f11413c8
+  url: https://git.ligo.org/cds/gpstime/-/archive/{{ version }}/gpstime-{{ version }}.tar.gz
+  sha256: 5908069f99884083881aee663a6c9bbb7b87a67b768d61eb299a04dd1c2db091
+  patches:
+    - entry_point.patch
 
 build:
-  noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
-  entry_points:
-    - gpstime = gpstime.__main__:main
-    - ietf-leap-seconds = ietf_leap_seconds:main
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vv"
 
 requirements:
   host:
     - pip
     - python
     - setuptools
-    - setuptools_scm
   run:
     - coreutils
     - python
@@ -30,35 +27,39 @@ requirements:
     - requests
 
 test:
+  requires:
+    - pytest
   imports:
     - gpstime
-    - ietf_leap_seconds
   commands:
     - gpstime --help
-    - ietf-leap-seconds --help
     - python -m unittest discover gpstime.test
 
 about:
   home: https://git.ligo.org/cds/gpstime
   dev_url: https://git.ligo.org/cds/gpstime
+  doc_url: https://cds.docs.ligo.org/gpstime/
   license: GPL-3.0-or-later
   license_family: GPL
   license_file: COPYING
   summary: GPS-aware datetime module
   description: |
-    This package provides a gpstime package, including a gpstime subclass
-    of the built-in datetime class with the addition of GPS access and
-    conversion methods.
+    This package provides GPS time conversion utilities, including a
+    gpstime subclass of the built-in datetime class with the addition
+    of GPS time parsing and conversion methods.
 
-    Leap second data is provided by the ietf_leap_seconds module that
-    helps automatically maintain a local copy of the IETF leap second
-    list:
+    Leap second data, necessary for GPS time conversion, is expected
+    to be provided by the core libc Time Zone Database tzdata.  If for
+    some reason the tzdata leapsecond file is not available, a local
+    cache of the IETF leap second record will be maintained:
 
       https://www.ietf.org/timezones/data/leap-seconds.list
 
-    A command-line GPS data conversion utility that uses the gpstime
-    module is also included.  It is a rough work-alike to "tconvert".
+    The package can be executed as a command-line GPS conversion utility.
+    that uses the gpstime module is also included.  It is a rough
+    work-alike to LIGO 'tconvert' utility.
 
 extra:
   recipe-maintainers:
     - duncanmmacleod
+    - jrollins
