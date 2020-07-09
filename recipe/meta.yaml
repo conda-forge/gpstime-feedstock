@@ -35,9 +35,9 @@ test:
   imports:
     - gpstime
   commands:
-    - python -m unittest discover gpstime.test
     - gpstime "Jan 1"
     - gpstime 1261872018
+    - python -m unittest discover gpstime.test
 
 about:
   home: https://git.ligo.org/cds/gpstime
