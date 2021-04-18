@@ -1,5 +1,5 @@
 {% set name = "gpstime" %}
-{% set version = "0.4.5" %}
+{% set version = "0.4.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://git.ligo.org/cds/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3bf2b9f940500240abaaddee583743bc683e1f98e7d50c4bce2e62d1abf3cb29
+  sha256: 1879e797dfda9701442ee5061fc2e25bc5e8ac575a4142f692d5b2cb37fe4a65
   patches:
     - entry_point.patch
 
