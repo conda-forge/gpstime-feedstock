@@ -31,12 +31,14 @@ requirements:
 
 test:
   requires:
-    - pytest
-  imports:
-    - gpstime
+    - pip
   commands:
+    # check requirements
+    - python -m pip check
+    # check entry point
     - gpstime "Jan 1"
     - gpstime 1261872018
+    # run test suite
     - python -m unittest discover gpstime.test
 
 about:
