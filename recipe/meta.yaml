@@ -14,7 +14,7 @@ source:
 build:
   entry_points:
     - gpstime = gpstime.__main__:main
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
