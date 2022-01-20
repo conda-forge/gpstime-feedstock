@@ -16,6 +16,8 @@ build:
     - gpstime = gpstime.__main__:main
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
+  script_env:
+    - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
 
 requirements:
   host:
