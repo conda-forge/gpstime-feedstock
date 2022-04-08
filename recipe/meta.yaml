@@ -26,6 +26,7 @@ requirements:
     - setuptools
     - setuptools-scm
   run:
+    - appdirs
     - coreutils  # [not win]
     - m2-coreutils  # [win]
     - python
