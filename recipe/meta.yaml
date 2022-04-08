@@ -1,5 +1,5 @@
 {% set name = "gpstime" %}
-{% set version = "0.5.5" %}
+{% set version = "0.6.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://git.ligo.org/cds/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bbfd3990fba4fadcbd0f2f6b4166a824a7a09cd0ab1651f756cd96446a838a55
+  sha256: 4b1fd66dfaa15e4ba45cbb34c8303c4e23929b8f33a7e2309d98e0f435cc73f6
   patches:
     - entry_point.patch
 
@@ -26,6 +26,7 @@ requirements:
     - setuptools
     - setuptools-scm
   run:
+    - appdirs
     - coreutils  # [not win]
     - m2-coreutils  # [win]
     - python
