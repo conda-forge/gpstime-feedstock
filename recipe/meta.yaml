@@ -14,7 +14,7 @@ source:
 build:
   entry_points:
     - gpstime = gpstime.__main__:main
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
