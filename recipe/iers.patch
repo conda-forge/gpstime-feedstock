@@ -1,0 +1,21 @@
+diff --git a/gpstime/leaps.py b/gpstime/leaps.py
+index ab068b0..fdb6d27 100644
+--- a/gpstime/leaps.py
++++ b/gpstime/leaps.py
+@@ -13,6 +13,7 @@ LEAPFILE_IETF = '/usr/share/zoneinfo/leap-seconds.list'
+ LEAPFILE_IETF_USER = os.path.join(
+     appdirs.user_cache_dir('gpstime'), 'leap-seconds.list')
+ LEAPFILE_IETF_URL = 'https://www.ietf.org/timezones/data/leap-seconds.list'
++LEAPFILE_IERS_URL = 'https://hpiers.obspm.fr/iers/bul/bulc/ntp/leap-seconds.list'
+ 
+ 
+ def ntp2unix(ts):
+@@ -115,7 +116,7 @@ class LeapData:
+             elif self.expired:
+                 print("Leap second data is expired.", file=sys.stderr)
+             print("Updating local user leap data cache from IETF...", file=sys.stderr)
+-            self._load(fetch_ietf_leapfile, LEAPFILE_IETF_URL)
++            self._load(fetch_ietf_leapfile, LEAPFILE_IERS_URL)
+             if not self._data:
+                 raise RuntimeError("Failed to load leap second data.")
+             elif self.expired:

@@ -10,6 +10,9 @@ source:
   sha256: 4b1fd66dfaa15e4ba45cbb34c8303c4e23929b8f33a7e2309d98e0f435cc73f6
   patches:
     - entry_point.patch
+    # use IERS for leap-seconds.list,
+    # see https://git.ligo.org/cds/software/gpstime/-/issues/19
+    - iers.patch
 
 build:
   entry_points:
