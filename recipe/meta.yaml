@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 35442367bb272bf8a508912a128a18f7606a0d55
+  sha256: f0307060ba285c2b1de3c3194fbca6c121022cf03d5423d79f24ebc07a25f391
   patches:
     - entry_point.patch
 
