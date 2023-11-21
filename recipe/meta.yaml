@@ -1,5 +1,5 @@
 {% set name = "gpstime" %}
-{% set version = "0.6.1" %}
+{% set version = "0.8.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4b1fd66dfaa15e4ba45cbb34c8303c4e23929b8f33a7e2309d98e0f435cc73f6
+  sha256: 6131d06a1059912559db3ce2a0ea7ffd748181dd9a5e82a7500de99cabcc55df
   patches:
     - entry_point.patch
     # use IERS for leap-seconds.list,
@@ -17,7 +17,7 @@ source:
 build:
   entry_points:
     - gpstime = gpstime.__main__:main
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
