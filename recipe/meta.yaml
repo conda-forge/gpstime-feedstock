@@ -6,7 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  # url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: f0307060ba285c2b1de3c3194fbca6c121022cf03d5423d79f24ebc07a25f391
   patches:
     - entry_point.patch
