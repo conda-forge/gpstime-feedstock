@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://git.ligo.org/cds/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: 4b1fd66dfaa15e4ba45cbb34c8303c4e23929b8f33a7e2309d98e0f435cc73f6
   patches:
     - entry_point.patch
@@ -52,9 +52,9 @@ test:
     - python -m unittest discover gpstime.test
 
 about:
-  home: https://git.ligo.org/cds/gpstime
-  dev_url: https://git.ligo.org/cds/gpstime
-  doc_url: https://cds.docs.ligo.org/gpstime/
+  home: https://git.ligo.org/cds/software/gpstime
+  dev_url: https://git.ligo.org/cds/software/gpstime
+  doc_url: https://cds.docs.ligo.org/software/gpstime/
   license: GPL-3.0-or-later
   license_family: GPL
   license_file:
