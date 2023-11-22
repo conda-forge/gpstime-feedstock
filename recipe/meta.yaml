@@ -1,23 +1,21 @@
 {% set name = "gpstime" %}
-{% set version = "0.6.1" %}
+{% set version = "0.8.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4b1fd66dfaa15e4ba45cbb34c8303c4e23929b8f33a7e2309d98e0f435cc73f6
+  # url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: f0307060ba285c2b1de3c3194fbca6c121022cf03d5423d79f24ebc07a25f391
   patches:
     - entry_point.patch
-    # use IERS for leap-seconds.list,
-    # see https://git.ligo.org/cds/software/gpstime/-/issues/19
-    - iers.patch
 
 build:
   entry_points:
     - gpstime = gpstime.__main__:main
-  number: 3
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
@@ -69,13 +67,13 @@ about:
     Leap second data, necessary for GPS time conversion, is expected
     to be provided by the core libc Time Zone Database tzdata.  If for
     some reason the tzdata leapsecond file is not available, a local
-    cache of the IETF leap second record will be maintained:
+    cache of the IERS leap second record will be maintained:
 
-      https://www.ietf.org/timezones/data/leap-seconds.list
+      https://hpiers.obspm.fr/iers/bul/bulc/ntp/leap-seconds.list
 
-    The package can be executed as a command-line GPS conversion utility.
-    that uses the gpstime module is also included.  It is a rough
-    work-alike to LIGO 'tconvert' utility.
+    The package can be executed as a command-line GPS conversion
+    utility.  In this manor it is a rough work-alike to the LIGO
+    "tconvert" utility.
 
 extra:
   recipe-maintainers:
