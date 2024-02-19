@@ -24,7 +24,7 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python >=3.5
     - setuptools
     - setuptools-scm
   run:
@@ -33,7 +33,7 @@ requirements:
     - appdirs
     - coreutils  # [unix]
     - m2-coreutils  # [win]
-    - python
+    - python >=3.5
     - python-dateutil
     - requests
 
