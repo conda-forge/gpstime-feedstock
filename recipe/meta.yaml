@@ -15,25 +15,25 @@ source:
 build:
   entry_points:
     - gpstime = gpstime.__main__:main
-  number: 0
+  noarch: python
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - pip
-    - python
+    - python >=3.5
     - setuptools
     - setuptools-scm
   run:
+    - __unix  # [unix]
+    - __win  # [win]
     - appdirs
-    - coreutils  # [not win]
+    - coreutils  # [unix]
     - m2-coreutils  # [win]
-    - python
+    - python >=3.5
     - python-dateutil
     - requests
 
