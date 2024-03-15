@@ -7,6 +7,6 @@ github:
   branch_name: main
   tooling_branch_name: main
 noarch_platforms:
-  - linux_64
-  - win_64
-test_on_native_only: true
+- linux_64
+- win_64
+test: native_and_emulated
