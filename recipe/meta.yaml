@@ -7,7 +7,7 @@ package:
 
 source:
   # url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: d5912ac85452d5b02593149f9d0bdc551a477514a9442536ff52c3d160984afe
   patches:
     - entry_point.patch
@@ -16,7 +16,7 @@ build:
   entry_points:
     - gpstime = gpstime.__main__:main
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
@@ -24,7 +24,7 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python {{ python_min }}
     - setuptools
     - setuptools-scm
   run:
@@ -33,13 +33,14 @@ requirements:
     - appdirs
     - coreutils  # [unix]
     - m2-coreutils  # [win]
-    - python >=3.5
+    - python >={{ python_min }}
     - python-dateutil
     - requests
 
 test:
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     # check requirements
     - python -m pip check
