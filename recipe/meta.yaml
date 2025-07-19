@@ -1,5 +1,5 @@
 {% set name = "gpstime" %}
-{% set version = "0.8.2" %}
+{% set version = "0.8.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +8,7 @@ package:
 source:
   # url: https://git.ligo.org/cds/software/{{ name }}/-/archive/{{ version }}/{{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: d5912ac85452d5b02593149f9d0bdc551a477514a9442536ff52c3d160984afe
+  sha256: 774657ed11149fbba2f398a1644b95aa6e0ecf9b415c97a30a8c48b30aa1be61
   patches:
     - entry_point.patch
 
@@ -16,7 +16,7 @@ build:
   entry_points:
     - gpstime = gpstime.__main__:main
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
     - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
