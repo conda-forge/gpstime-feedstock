@@ -42,6 +42,7 @@ test:
   commands:
     # check requirements
     - python -m pip check
+    - python -m pip show gpstime
     # check entry point
     - gpstime "Jan 1"
     - gpstime 1261872018
