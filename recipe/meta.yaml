@@ -30,9 +30,9 @@ requirements:
   run:
     - __unix  # [unix]
     - __win  # [win]
-    - appdirs
     - coreutils  # [unix]
     - m2-coreutils  # [win]
+    - platformdirs
     - python >={{ python_min }}
     - python-dateutil
     - requests
