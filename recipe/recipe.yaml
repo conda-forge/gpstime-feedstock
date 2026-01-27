@@ -1,0 +1,86 @@
+schema_version: 1
+
+context:
+  name: gpstime
+  version: 0.8.3
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 774657ed11149fbba2f398a1644b95aa6e0ecf9b415c97a30a8c48b30aa1be61
+  patches:
+    - 0001-Use-platform-independent-script-entry-point.patch
+
+build:
+  noarch: python
+  number: 0
+  python:
+    entry_points:
+      - gpstime = gpstime.__main__:main
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - pip
+    - python ${{ python_min }}.*
+    - setuptools
+    - setuptools-scm
+  run:
+    - if: unix
+      then:
+        - __unix
+        - coreutils
+    - if: win
+      then:
+        - __win
+        - m2-coreutils
+    - platformdirs
+    - python >=${{ python_min }}
+    - python-dateutil
+    - requests
+
+tests:
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - python -m pip check
+      - python -m pip show gpstime
+      - "gpstime \"Jan 1\""
+      - gpstime 1261872018
+      - python -m unittest discover gpstime.test
+
+about:
+  summary: GPS-aware datetime module
+  description: |
+    This package provides GPS time conversion utilities, including a
+    gpstime subclass of the built-in datetime class with the addition
+    of GPS time parsing and conversion methods.
+
+    Leap second data, necessary for GPS time conversion, is expected
+    to be provided by the core libc Time Zone Database tzdata.  If for
+    some reason the tzdata leapsecond file is not available, a local
+    cache of the IERS leap second record will be maintained:
+
+    https://hpiers.obspm.fr/iers/bul/bulc/ntp/leap-seconds.list
+
+    The package can be executed as a command-line GPS conversion
+    utility.  In this manor it is a rough work-alike to the LIGO
+    "tconvert" utility.
+  homepage: https://git.ligo.org/cds/software/gpstime
+  repository: https://git.ligo.org/cds/software/gpstime
+  documentation: https://cds.docs.ligo.org/software/gpstime/
+  license: GPL-3.0-or-later
+  license_file:
+    - COPYING
+    - COPYING-GPL-3
+
+extra:
+  recipe-maintainers:
+    - duncanmmacleod
+    - jrollins
+    - evonreis
