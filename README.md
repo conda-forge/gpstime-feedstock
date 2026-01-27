@@ -22,12 +22,11 @@ to be provided by the core libc Time Zone Database tzdata.  If for
 some reason the tzdata leapsecond file is not available, a local
 cache of the IERS leap second record will be maintained:
 
-  https://hpiers.obspm.fr/iers/bul/bulc/ntp/leap-seconds.list
+https://hpiers.obspm.fr/iers/bul/bulc/ntp/leap-seconds.list
 
 The package can be executed as a command-line GPS conversion
 utility.  In this manor it is a rough work-alike to the LIGO
 "tconvert" utility.
-
 
 Current build status
 ====================
