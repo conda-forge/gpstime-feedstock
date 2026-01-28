@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: gpstime
-  version: 0.8.3
+  version: "0.9.2"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 774657ed11149fbba2f398a1644b95aa6e0ecf9b415c97a30a8c48b30aa1be61
+  sha256: fdf934246c2ea8709cd9ba6cac5fbc0237298de2adbd7132c48a7c0bb279fe74
   patches:
     - 0001-Use-platform-independent-script-entry-point.patch
 
