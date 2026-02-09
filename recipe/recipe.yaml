@@ -11,8 +11,6 @@ package:
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: fdf934246c2ea8709cd9ba6cac5fbc0237298de2adbd7132c48a7c0bb279fe74
-  patches:
-    - 0001-Use-platform-independent-script-entry-point.patch
 
 build:
   noarch: python
