@@ -44,13 +44,18 @@ tests:
   - requirements:
       run:
         - pip
+        - pytest
         - python ${{ python_min }}.*
     script:
+      # Check metadata
       - python -m pip check
       - python -m pip show gpstime
-      - "gpstime \"Jan 1\""
+      # Check command-line utility
+      - gpstime "Jan 1"
       - gpstime 1261872018
-      - python -m unittest discover gpstime.test
+      # Run test suite (suite itself is Unix only)
+      - if: unix
+        then: python -m pytest --pyargs gpstime -v
 
 about:
   summary: GPS-aware datetime module
