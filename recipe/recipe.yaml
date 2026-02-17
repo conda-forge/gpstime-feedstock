@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: gpstime
-  version: 0.8.3
+  version: "0.10.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,9 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 774657ed11149fbba2f398a1644b95aa6e0ecf9b415c97a30a8c48b30aa1be61
-  patches:
-    - 0001-Use-platform-independent-script-entry-point.patch
+  sha256: 242d45f1a7ed6f293a82b13880f25fcf3c994650770825121d8f5b3f2ccae026
 
 build:
   noarch: python
@@ -46,13 +44,18 @@ tests:
   - requirements:
       run:
         - pip
+        - pytest
         - python ${{ python_min }}.*
     script:
+      # Check metadata
       - python -m pip check
       - python -m pip show gpstime
-      - "gpstime \"Jan 1\""
+      # Check command-line utility
+      - gpstime "Jan 1"
       - gpstime 1261872018
-      - python -m unittest discover gpstime.test
+      # Run test suite (suite itself is Unix only)
+      - if: unix
+        then: python -m pytest --pyargs gpstime -v
 
 about:
   summary: GPS-aware datetime module
